@@ -1,5 +1,13 @@
-import yaml = require("js-yaml");
 import discord = require("discord.js");
+
+export interface CommandContext {
+    bot: discord.Client;
+    message: discord.Message;
+    sanitized: string;
+    sde: {}
+}
+
+import handle from "./handlers";
 
 const bot = new discord.Client();
 bot.on("ready", async () => {
@@ -8,17 +16,14 @@ bot.on("ready", async () => {
     console.log(`Invite: ${invite}`);
 });
 
-function isSelf(bot: discord.Client, user: discord.User) {
-    return bot.user.id === user.id;
-}
-
 function mentionsSelf(bot: discord.Client, message: discord.Message) {
-    return message.mentions && message.mentions.users.has(bot.user.id);
+    return message.mentions && message.mentions.users && message.mentions.users.has(bot.user.id);
 }
 
 bot.on("message", message => {
-    if (message.content.indexOf("ping") >= 0 && mentionsSelf(bot, message)) {
-        message.channel.sendMessage("pong");
+    if (mentionsSelf(bot, message)) {
+        // Provide a sanitized message content with the self mention removed
+        handle({bot, message, sanitized: message.cleanContent.replace("@hobs", "").trim(), sde: {}});
     }
 });
 
