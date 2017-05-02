@@ -1,3 +1,5 @@
+/// <reference path="./shims.d.ts" />
+
 import discord = require("discord.js");
 import eve = require("eve-online-sde");
 
@@ -22,7 +24,7 @@ function mentionsSelf(bot: discord.Client, message: discord.Message) {
 }
 
 bot.on("message", async (message) => {
-    if (mentionsSelf(bot, message)) {
+    if (!message.author.bot && (mentionsSelf(bot, message) || message.channel.type === "dm")) {
         // Provide a sanitized message content with the self mention removed
         await handle({bot, message, sanitized: message.cleanContent.replace("@hobs", "").trim(), sde: eve});
     }

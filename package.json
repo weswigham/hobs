@@ -28,6 +28,7 @@
     "@types/node": "^7.0.4",
     "discord.js": "^11.0.0",
     "eve-online-sde": "latest",
+    "html2markdown": "^1.1.0",
     "js-yaml": "^3.7.0",
     "ts-node": "^2.0.0",
     "typescript": "^2.1.5",

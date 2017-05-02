@@ -1,5 +1,6 @@
 import {Client, Message} from "discord.js";
 import {CommandContext} from "../";
+import {fromHTMLtoMarkdown} from "../util";
 
 export default async function({bot, message, sanitized, sde}: CommandContext) {
     const prefix = "link ";
@@ -18,8 +19,8 @@ export default async function({bot, message, sanitized, sde}: CommandContext) {
     }
     
     if (!item) {
-        await message.channel.sendMessage(`Item '${searchText}' could not be found.`);
+        await message.channel.send(`Item '${searchText}' could not be found.`);
         return;
     }
-    await message.channel.sendMessage(item.description.en);
+    await message.channel.send(fromHTMLtoMarkdown(item.description.en));
 }
