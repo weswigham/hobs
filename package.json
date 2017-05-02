@@ -26,10 +26,11 @@
   "dependencies": {
     "@types/js-yaml": "^3.5.29",
     "@types/node": "^7.0.4",
+    "@types/to-markdown": "^3.0.0",
     "discord.js": "^11.0.0",
     "eve-online-sde": "latest",
-    "html2markdown": "^1.1.0",
     "js-yaml": "^3.7.0",
+    "to-markdown": "^3.0.4",
     "ts-node": "^2.0.0",
     "typescript": "^2.1.5",
     "uws": "^0.14.5"
