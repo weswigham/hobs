@@ -1,10 +1,11 @@
 import discord = require("discord.js");
+import eve = require("eve-online-sde");
 
 export interface CommandContext {
     bot: discord.Client;
     message: discord.Message;
     sanitized: string;
-    sde: {}
+    sde: typeof eve
 }
 
 import handle from "./handlers";
@@ -20,10 +21,10 @@ function mentionsSelf(bot: discord.Client, message: discord.Message) {
     return message.mentions && message.mentions.users && message.mentions.users.has(bot.user.id);
 }
 
-bot.on("message", message => {
+bot.on("message", async (message) => {
     if (mentionsSelf(bot, message)) {
         // Provide a sanitized message content with the self mention removed
-        handle({bot, message, sanitized: message.cleanContent.replace("@hobs", "").trim(), sde: {}});
+        await handle({bot, message, sanitized: message.cleanContent.replace("@hobs", "").trim(), sde: eve});
     }
 });
 
