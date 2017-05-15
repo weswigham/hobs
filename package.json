@@ -4,7 +4,7 @@
   "description": "EVE Online discord information butler",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node index.ts",
+    "start": "node launch.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
