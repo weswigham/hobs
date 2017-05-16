@@ -4,6 +4,7 @@ import discord = require("discord.js");
 import eve = require("eve-online-sde");
 import esi = require("eve-online-esi");
 import fuse = require("fuse.js");
+import http = require("http");
 
 const fusedTypes: Promise<fuse> = eve.types().then(t => {
     return new fuse(Object.keys(t).map(k => (t[k].id = k, t[k])), {
@@ -35,6 +36,10 @@ bot.on("ready", async () => {
     console.log("Hobs, reporting for duty.");
     const invite = await bot.generateInvite(0);
     console.log(`Invite: ${invite}`);
+    http.createServer((req, res) => {
+        res.write(invite);
+        res.end();
+    });
 });
 
 function mentionsSelf(bot: discord.Client, message: discord.Message) {
