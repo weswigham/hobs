@@ -39,7 +39,7 @@ bot.on("ready", async () => {
     http.createServer((req, res) => {
         res.write(invite);
         res.end();
-    });
+    }).listen(80);
 });
 
 function mentionsSelf(bot: discord.Client, message: discord.Message) {
