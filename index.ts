@@ -4,7 +4,6 @@ import path = require("path");
 import sqlite = require("sqlite");
 
 
-
 const bot = new Commando.CommandoClient({
     owner: process.env.OWNERID || "-1",
     commandPrefix: "!pls"
@@ -14,7 +13,7 @@ bot.registry.registerGroups([
     ["trivial", "Trivial Commands"]
 ])
 .registerDefaults()
-.registerCommandsIn(path.join(__dirname, "commands"));
+.registerCommands([require("./commands/link"), require("./commands/status")]);
 
 bot.setProvider(
     sqlite.open(path.join(__dirname, "settings.sqlite3")).then(db => new Commando.SQLiteProvider(db))

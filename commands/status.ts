@@ -12,7 +12,6 @@ export = class TranqulityStatus extends commando.Command {
             description: "Show Tranquility server status",
             details: "Queries the ESI API for the tranquility server status and active playercount.",
             examples: ["status"],
-            args: [],
             throttling: {duration: 60, usages: 5},
         });
     }

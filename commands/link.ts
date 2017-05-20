@@ -4,7 +4,7 @@ import {fusedTypes as types} from "../data";
 import {fromHTMLtoMarkdown} from "../util";
 
 export = class LinkObject extends commando.Command { 
-    constructor(client: commando.CommandoClient, info: commando.CommandInfo) {
+    constructor(client: commando.CommandoClient) {
         super(client, {
             name: "link",
             memberName: "link",
@@ -16,8 +16,8 @@ export = class LinkObject extends commando.Command {
             throttling: {duration: 60, usages: 5},
         });
     }
-    async run(message: commando.CommandMessage, args: string[], fromPattern?: boolean) {
-        const searchText = args.join(" ").replace("PLEX", "Pilot's License Extension (PLEX)"); // Improve accuracy for common abbrev.
+    async run(message: commando.CommandMessage, args: string | string[], fromPattern?: boolean) {
+        const searchText = (typeof args === "object" ? args.join(" ") : args).replace("PLEX", "Pilot's License Extension (PLEX)"); // Improve accuracy for common abbrev.
 
         console.log(`Looking up item: ${searchText}`);
         let item: any;
@@ -81,7 +81,7 @@ function generateLinks(name: string, item: any) {
     }
     if (item.capacity && item.mass && item.volume && item.traits) {
         // Probably a ship
-        links.push(`[Osmium](https://o.smium.org/browse/best?q=%40ship%20%22${name}%22)`);
+        links.push(`[Osmium](https://o.smium.org/browse/best?q=%40ship%20%22${name.replace(/\s/g, "%20")}%22)`);
         links.push(`[zKillboard](https://zkillboard.com/ship/${item.id}/)`);
     }
     return links.join(" - ");
