@@ -38,3 +38,6 @@ jspm_packages
 
 # vscode worksapce
 .vscode
+
+# Settings debug
+settings.sqlite3
