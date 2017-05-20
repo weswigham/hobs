@@ -28,7 +28,7 @@
     "@types/node": "^7.0.4",
     "@types/to-markdown": "^3.0.0",
     "discord.js": "^11.0.0",
-    "discord.js-commando": "Gawdl3y/discord.js-commando",
+    "discord.js-commando": "github:gawdl3y/discord.js-commando",
     "eve-online-esi": "^1.0.0",
     "eve-online-sde": "latest",
     "fuse.js": "^3.0.0",
