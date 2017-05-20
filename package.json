@@ -35,7 +35,7 @@
     "js-yaml": "^3.7.0",
     "sqlite": "^2.7.0",
     "to-markdown": "^3.0.4",
-    "ts-node": "^2.0.0",
+    "ts-node": "^3.0.4",
     "typescript": "^2.1.5",
     "uws": "^0.14.5"
   }
