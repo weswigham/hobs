@@ -77,6 +77,8 @@ function generateLinks(name: string, item: any) {
     const links = [];
     if (item.marketGroupID) {
         // Appears on public market
+        links.push(`[EVEInfo](https://eveinfo.com/item/${item.id}/)`);
+        links.push(`[Element 43](https://element-43.com/market/${item.id}/)`);
         links.push(`[Evepraisal](https://evepraisal.com/item/${item.id}/)`);
     }
     if (item.capacity && item.mass && item.volume && item.traits) {
