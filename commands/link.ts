@@ -77,7 +77,7 @@ function generateLinks(name: string, item: any) {
     const links = [];
     if (item.marketGroupID) {
         // Appears on public market
-        links.push(`[EVE Central](https://eve-central.com/home/quicklook.html?typeid=${item.id})`);
+        links.push(`[Evepraisal](https://evepraisal.com/item/${item.id}/)`);
     }
     if (item.capacity && item.mass && item.volume && item.traits) {
         // Probably a ship
